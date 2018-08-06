@@ -20,9 +20,12 @@ public class MyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse response) throws IOException {
         BufferedReader reader = req.getReader();
 
-        String reqestString = CharStreams.toString(reader);
-        reqestString = reqestString.substring(1, reqestString.length() - 1);
-        String[] stringArray = reqestString.split(" ");
+        String requestString = CharStreams.toString(reader);
+
+        // in request first and last char is ", and we clip it
+        requestString = requestString.substring(1, requestString.length() - 1);
+
+        String[] stringArray = requestString.split(" ");
 
         int[] intArray = new int[stringArray.length];
         for (int i = 0; i < stringArray.length; i++) {
